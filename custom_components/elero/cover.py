@@ -3,6 +3,7 @@
 __version__ = "3.2.1"
 
 import logging
+from datetime import timedelta
 
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
@@ -103,6 +104,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {vol.Required(CONF_COVERS): vol.Schema({cv.slug: COVER_SCHEMA}), }
 )
 
+SCAN_INTERVAL = timedelta(seconds=5*60)
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
     """Set up the Elero cover platform."""
